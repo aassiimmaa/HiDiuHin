@@ -1,10 +1,10 @@
 const CONFIGDATA = {
-  titleHeader: "Chào cậu, tớ có điều muốn nói. </br> Làm người yêu tớ nhé!",
+  titleHeader: "Hê lô em pé Dịu Hìn. </br> Em có mún nghe lời chúc của anh hông dọ.",
   descriptionHeader:
-    "Hãy trả lời một cách thật lòng nhé. Nếu cậu im lặng và rời đi thì tức là cậu đã ĐỒNG Ý.",
-  buttonYes: "Tớ đồng ý",
-  buttonNo: "Không đồng ý",
-  titleModar: "Cảm ơn cậu.",
+    "Mún thì ấn ok còn hông thì cũng ấn ok",
+  buttonYes: "Ô kê anh iu",
+  buttonNo: "Đéo",
+  titleModar: "Chúc pé iu 8/3 zui zẻ hehe!",
   descriptionModar:
-    "Cảm ơn cậu đã cho tớ một cơ hội để tớ có thể ở bên cạnh, che chở và bảo vệ cậu. </br> Tớ biết tớ không được đẹp trai, cũng chẳng lắm tài nhưng tớ có một trái tim chân thành. Cậu chính là cả thế giới của tớ. </br> Tối nay tớ sẽ đến đón cậu. Cậu mặc thật đẹp vào nhé! Sẽ có một bất ngờ dành cho cậu.</br> Love you <3",
+    "Chúc em pé 8/3 zui zẻ. Chúc pé iu ngày càng xink đẹp zui zẻ iu đời zới bớt tiu cực dùm tui </br> Chúc em mãi là của tui </br> Chúc em mãi là của tui </br> Chúc em mãi là của tui </br> Iu emmmmmmmmmmmmmmmmmmmmmmmmm <3 </br> From Thenk En with luv <3",
 };
