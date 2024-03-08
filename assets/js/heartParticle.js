@@ -41,10 +41,6 @@ const Point = (function () {
   return Point;
 })();
 
-/*
- * Particle class
- */
-
 const Particle = (function () {
   function Particle() {
     this.position = new Point();
@@ -102,9 +98,6 @@ const Particle = (function () {
   return Particle;
 })();
 
-/*
- * ParticlePool class
- */
 
 const ParticlePool = (function () {
   let particles,
@@ -113,7 +106,7 @@ const ParticlePool = (function () {
     duration = settings.particles.duration;
 
   function ParticlePool(length) {
-    // create and populate particle pool
+ 
 
     particles = new Array(length);
 
@@ -123,7 +116,6 @@ const ParticlePool = (function () {
   ParticlePool.prototype.add = function (x, y, dx, dy) {
     particles[firstFree].initialize(x, y, dx, dy);
 
-    // handle circular queue
 
     firstFree++;
 
@@ -137,7 +129,6 @@ const ParticlePool = (function () {
   ParticlePool.prototype.update = function (deltaTime) {
     var i;
 
-    // update active particles
 
     if (firstActive < firstFree) {
       for (i = firstActive; i < firstFree; i++) particles[i].update(deltaTime);
@@ -150,7 +141,6 @@ const ParticlePool = (function () {
       for (i = 0; i < firstFree; i++) particles[i].update(deltaTime);
     }
 
-    // remove inactive particles
 
     while (particles[firstActive].age >= duration && firstActive != firstFree) {
       firstActive++;
@@ -160,7 +150,6 @@ const ParticlePool = (function () {
   };
 
   ParticlePool.prototype.draw = function (context, image) {
-    // draw active particles
 
     if (firstActive < firstFree) {
       for (i = firstActive; i < firstFree; i++)
@@ -178,17 +167,13 @@ const ParticlePool = (function () {
   return ParticlePool;
 })();
 
-/*
- * Putting it all together
- */
 
 (function (canvas) {
   let context = canvas.getContext("2d"),
     particles = new ParticlePool(settings.particles.length),
-    particleRate = settings.particles.length / settings.particles.duration, // particles/sec
+    particleRate = settings.particles.length / settings.particles.duration,
     time;
 
-  // get point on heart with -PI <= t <= PI
 
   function pointOnHeart(t) {
     return new Point(
@@ -202,7 +187,6 @@ const ParticlePool = (function () {
     );
   }
 
-  // creating the particle image using a dummy canvas
 
   var image = (function () {
     var canvas = document.createElement("canvas"),
@@ -212,7 +196,6 @@ const ParticlePool = (function () {
 
     canvas.height = settings.particles.size;
 
-    // helper function to create the path
 
     function to(t) {
       var point = pointOnHeart(t);
@@ -226,7 +209,6 @@ const ParticlePool = (function () {
       return point;
     }
 
-    // create the path
 
     context.beginPath();
 
@@ -237,7 +219,7 @@ const ParticlePool = (function () {
     context.moveTo(point.x, point.y);
 
     while (t < Math.PI) {
-      t += 0.01; // baby steps!
+      t += 0.01;
 
       point = to(t);
 
@@ -246,13 +228,10 @@ const ParticlePool = (function () {
 
     context.closePath();
 
-    // create the fill
-
     context.fillStyle = "#B8336A";
 
     context.fill();
 
-    // create the image
 
     var image = new Image();
 
@@ -261,25 +240,20 @@ const ParticlePool = (function () {
     return image;
   })();
 
-  // render that thing!
 
   function render() {
-    // next animation frame
 
     requestAnimationFrame(render);
 
-    // update time
 
     var newTime = new Date().getTime() / 1000,
       deltaTime = newTime - (time || newTime);
 
     time = newTime;
 
-    // clear canvas
 
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // create new particles
 
     var amount = particleRate * deltaTime;
 
@@ -296,14 +270,12 @@ const ParticlePool = (function () {
       );
     }
 
-    // update and draw particles
 
     particles.update(deltaTime);
 
     particles.draw(context, image);
   }
 
-  // handle (re-)sizing of the canvas
 
   function onResize() {
     canvas.width = canvas.clientWidth;
@@ -313,7 +285,6 @@ const ParticlePool = (function () {
 
   window.onresize = onResize;
 
-  // delay rendering bootstrap
 
   setTimeout(function () {
     onResize();

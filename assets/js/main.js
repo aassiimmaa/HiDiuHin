@@ -1,5 +1,4 @@
 /**
- * @author Đông Ngô <dongngo.2000@gmail.com>
  * 
  */
 

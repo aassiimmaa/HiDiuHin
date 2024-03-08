@@ -1,13 +1,13 @@
 const settings = {
   particles: {
-    length: 500, // maximum amount of particles
+    length: 500,
 
-    duration: 2, // particle duration in sec
+    duration: 2,
 
-    velocity: 120, // particle velocity in pixels/sec
+    velocity: 120, 
 
-    effect: -0.75, // play with this for a nice effect
+    effect: -0.75,
 
-    size: 30, // particle size in pixels
+    size: 30,
   },
 };
